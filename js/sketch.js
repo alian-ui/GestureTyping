@@ -1,15 +1,11 @@
 // ジェスチャーの種類
-// 👍(Thumb_Up), 👎(Thumb_Down), ✌️(Victory), 
-// ☝️(Pointng_Up), ✊(Closed_Fist), 👋(Open_Palm), 
-// 🤟(ILoveYou)
 function getCode(left_gesture, right_gesture) {
   let code_array = {
-    "Thumb_Up": 1,
-    "Thumb_Down": 2,
-    "Victory": 3,
-    "Pointing_Up": 4,
-    "Closed_Fist": 5,
-    "Open_Palm": 6,
+
+    "palm": 1, "thumb": 2, "fist": 3,
+    "index": 4, "middle": 5, "ring": 6, "pinky": 7,
+    "thumb_index": 8,
+
   }
   let left_code = code_array[left_gesture];
   let right_code = code_array[right_gesture];
@@ -20,11 +16,18 @@ function getCode(left_gesture, right_gesture) {
 
 function getCharacter(code) {
   const codeToChar = {
-    "11": "a", "12": "b", "13": "c", "14": "d", "15": "e", "16": "f",
-    "21": "g", "22": "h", "23": "i", "24": "j", "25": "k", "26": "l",
-    "31": "m", "32": "n", "33": "o", "34": "p", "35": "q", "36": "r",
-    "41": "s", "42": "t", "43": "u", "44": "v", "45": "w", "46": "x",
-    "51": "y", "52": "z", "53": " ", "54": "backspace"
+    // 左手活性時 上中下段
+    "71": "q", "61": "w", "51": "e", "41": "r",
+    "72": "a", "62": "s", "52": "d", "42": "f",
+    "73": "z", "63": "x", "53": "c", "43": "v",
+    "81": "t", "82": "g", "83": "b", // 真ん中左列
+    // 右手活性時 上中下段
+    "14": "u", "15": "i", "16": "o", "17": "p",
+    "24": "j", "25": "k", "26": "l", "27": ";",
+    "34": "m", "35": ",", "36": ".", "37": "/",
+    "18": "y", "28": "h", "38": "n", // 真ん中右列
+    // spaceとbackspace
+    "22": " ", "88": "backspace"
   };
   return codeToChar[code] || "";
 }
